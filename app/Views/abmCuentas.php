@@ -247,7 +247,7 @@
         <div class="formulario-contacto">
             <h1>Cargar Cuenta</h1>
                     <form method="POST" action="<?php echo base_url().'/crearcuenta' ?>">
-                        <label for="numero">Numero</label>
+                        <label for="numero">Número</label>
                         <input type="number" name="numero" id="numero" class="form-control" pattern="[0-9]+"required>
                         <label for="tipo">Tipo</label>
                         <select id="tipo" name ="tipo" required>
@@ -268,9 +268,9 @@
                         <label for="monto_actual">Monto actual</label>
                         <input type="number" name="monto_actual" id="monto_actual" class="form-control" required>
                         <label for="nombre_titular">Titular</label>
-                        <input type="text" name="nombre_titular" id="nombre_titular" class="form-control" pattern="[!0-9]" required>
-                        <label for="dni_titular">DNI</label>
-                        <input type="number" name="dni_titular" id="dni_titular" class="form-control" pattern="[0-9]+" required>
+                        <input type="text" name="nombre_titular" id="nombre_titular" class="form-control" pattern="[a-zA-Z ]{2,40}" required>
+                        <label for="dni_titular">Número CUIT/CUIL sin guiones</label>
+                        <input type="text" name="dni_titular" id="dni_titular" class="form-control" pattern="(20|27)[0-9]{8}[0-9]" required>
                         <label for="banco">Banco</label>
                         <input type="text" name="banco" id="banco" class="form-control" required>
                         <label for="fcreacion">Fecha de Creación</label>
@@ -311,7 +311,7 @@
                             <th>Moneda</th>
                             <th>Monto actual</th>
                             <th>Titular</th>
-                            <th>DNI</th>
+                            <th>Cuit/Cuil</th>
                             <th>Banco</th>
                             <th>Fecha de creación</th>
                         </tr>

@@ -27,13 +27,28 @@ class clientesController extends BaseController
             "tel" => $_POST['tel']
         ];
 
-        $cliente = new clientesModel();
-        $respuesta = $cliente->setClientes($datos);
+        $datosUser = [
+            "usuario" => $_POST['dni'],
+            "contraseña" => $_POST['dni'],
+            "dni" => $_POST['dni'],
+            "rol" => 'user'
+        ];
 
-        if($respuesta == 1){
-            return redirect()->to(base_url('clientes'));
-        }else{
-            return redirect()->to(base_url());
+        $cliente = new clientesModel();
+        $clientes = new clientesModel();
+        $buscoCuenta = $clientes->getClienteDNI(['dni' => $datos["dni"]]);
+    
+        if ( count($buscoCuenta) >0){
+            echo'<script>alert("El cliente ya existe."); 
+            window.location.href="/sociedadbancaria/clientes";
+            </script>';
+            
+        }else{ 
+            $cliente->setUser($datosUser);
+            $cliente->setClientes($datos);
+            echo'<script>alert("Cliente cargado exitosamente.")
+            window.location.href="/sociedadbancaria/clientes";
+            </script>';
         }
     }
 
@@ -71,8 +86,9 @@ class clientesController extends BaseController
 		$clientes = new clientesModel();
 
 		$respuesta = $clientes->updateClientes($datos, $dni);
-
-		return redirect()->to(base_url('clientes'));
+        echo'<script>alert("Modificación exitosa."); 
+            window.location.href="/sociedadbancaria/clientes";
+            </script>';
 	}
 
 }

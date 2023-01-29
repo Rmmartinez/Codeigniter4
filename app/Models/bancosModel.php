@@ -47,5 +47,11 @@ class bancosModel extends Model
         return $banco->getResultArray();
     }
     
+    public function getBancoClave($nombre,$sucursal){
+        $buscoBanco = $this->db->table('bancos');
+		$buscoBanco->where('nombre', $nombre);
+        $buscoBanco->where('sucursal',$sucursal);
+		return $buscoBanco->get()->getResultArray();
+    }
 
 }

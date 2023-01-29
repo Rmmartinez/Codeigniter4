@@ -87,7 +87,7 @@
         }
 
         .formulario-contacto2{
-            width: 1200px;
+            width: 1300px;
             height: auto;
             margin: 40px auto;
             border-radius: 10px;
@@ -248,23 +248,23 @@
             <h1>Cargar Cliente</h1>
                 <form method="POST" action="<?php echo base_url().'/crearcliente' ?>">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" pattern="[!0-9]" required>
+                    <input type="text" name="nombre" id="nombre" class="form-control" pattern="[a-zA-Z ]{2,40}" required>
                     <label for="apellido">Apellido</label>
-                    <input type="text" name="apellido" id="apellido" class="form-control" pattern="[!0-9]" required>
+                    <input type="text" name="apellido" id="apellido" class="form-control" pattern="[a-zA-Z ]{2,40}"required>
                     <label for="domicilio">Domicilio</label>
                     <input type="text" name="domicilio" id="domicilio" class="form-control" required>
                     <label for="fnac">Fecha de Nacimiento</label>
-                    <input type="date" name="fnac" id="fnac" class="form-control" required>
+                    <input type="date" name="fnac" id="fnac" class="form-control" max="2004-12-31" required>
                     <label for="cuit_cuil">CUIT/CUIL</label>
-                    <select id="cuit_cuil" name ="cuit_cuil" required>
+                    <select id="cuit_cuil" name ="cuit_cuil" required >
                         <option selected> - </option>
                         <option value="Cuit">Cuit</option>
                         <option value="Cuil">Cuil</option>
                     </select>
-                    <label for="dni">DNI</label>
-                    <input type="number" name="dni" id="dni" class="form-control" required>
+                    <label for="dni">Número CUIT/CUIL sin guiones</label>
+                    <input type="text" name="dni" id="dni" class="form-control" required pattern="(20|27)[0-9]{8}[0-9]">
                     <label for="tel">Teléfono</label>
-                    <input type="tel" name="tel" id="tel" class="form-control" pattern="![A-Za-z]"required>
+                    <input type="tel" name="tel" id="tel" class="form-control" pattern="[0-9]{10}"required>
                     <br>
                     <button class="btn btn-primary">Guardar</button>
                 </form>
@@ -285,7 +285,7 @@
                             <th>Domicilio</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Cuit/Cuil</th>
-                            <th>DNI</th>
+                            <th>Númer Cuit/Cuil</th>
                             <th>Teléfono</th>
                         </tr>
                     <?php foreach($data as $key): ?>

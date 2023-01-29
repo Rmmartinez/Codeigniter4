@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\cuentasModel;
+use App\Models\clientesModel;
+
 
 class cuentasController extends BaseController
 {
@@ -29,12 +31,20 @@ class cuentasController extends BaseController
         ];
 
         $cuenta = new cuentasModel();
-        $respuesta = $cuenta->setCuentas($datos);
-
-        if($respuesta == 1){
-            return redirect()->to(base_url('cuentas'));
-        }else{
-            return redirect()->to(base_url());
+        $clientes = new clientesModel();
+        $buscoCuenta = $clientes->getClienteDNI(['dni' => $datos["dni_titular"]]);
+        $buscoNumero = $cuenta->getCuentaNum(['numero' => $datos["numero"]]);
+    
+        if ( count($buscoCuenta) == 0 || count($buscoNumero) > 0){
+            echo'<script>alert("Cliente inexistente, o número de cuenta repetida."); 
+            window.location.href="/sociedadbancaria/cuentas";
+            </script>';
+            
+        }else{ 
+            $cuenta->setCuentas($datos);
+            echo'<script>alert("Cuenta cargada exitosamente.")
+            window.location.href="/sociedadbancaria/cuentas";
+            </script>';
         }
     }
 
@@ -73,7 +83,9 @@ class cuentasController extends BaseController
 
 		$respuesta = $cuenta->updateCuentas($datos, $numero);
 
-		return redirect()->to(base_url('cuentas'));
+        echo'<script>alert("Modificación exitosa."); 
+            window.location.href="/sociedadbancaria/cuentas";
+            </script>';
 	}
 
     public function obtenercuentaTodo($data){

@@ -11,7 +11,7 @@ class Usuarios extends Migration
         $this->forge->addField([
             'usuario' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '15',
+                'constraint' => '11',
             ],
             'contraseña' => [
                 'type'       => 'VARCHAR',
@@ -23,7 +23,7 @@ class Usuarios extends Migration
             ],
             'dni' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '8',
+                'constraint'     => '11',
             ],
             
         ]);

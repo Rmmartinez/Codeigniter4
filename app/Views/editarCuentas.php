@@ -277,8 +277,8 @@
                         <input type="number" name="monto_actual" id="monto_actual" class="form-control" readonly value="<?php echo $monto_actual ?>" required>
                         <label for="nombre_titular">Titular</label>
                         <input type="text" name="nombre_titular" id="nombre_titular" class="form-control" value="<?php echo $nombre_titular ?>" required>
-                        <label for="dni_titular">DNI</label>
-                        <input type="number" name="dni_titular" id="dni_titular" class="form-control"  value="<?php echo $dni_titular ?>"required>
+                        <label for="dni_titular">Cuit/Cuil</label>
+                        <input type="number" name="dni_titular" id="dni_titular" class="form-control"  readonly value="<?php echo $dni_titular ?>"required>
                         <label for="banco">Banco</label>
                         <input type="text" name="banco" id="banco" readonly class="form-control" value="<?php echo $banco ?>" required>
                         <label for="fcreacion">Fecha de Creación</label>

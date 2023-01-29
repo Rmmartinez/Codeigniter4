@@ -31,7 +31,7 @@ class Clientes extends Migration
             ],
             'dni' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '8',
+                'constraint'     => '11',
             ],
             'tel' => [
                 'type'           => 'VARCHAR',

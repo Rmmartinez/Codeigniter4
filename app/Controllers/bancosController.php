@@ -24,12 +24,18 @@ class bancosController extends BaseController
         ];
 
         $banco = new bancosModel();
-        $respuesta = $banco->setBancos($datos);
-
-        if($respuesta == 1){
-            return redirect()->to(base_url('bancos'));
-        }else{
-            return redirect()->to(base_url());
+        $buscoBanco = $banco->getBancoClave($datos["nombre"],$datos["sucursal"]);
+    
+        if ( count($buscoBanco) >0){
+            echo'<script>alert("El banco ya existe."); 
+            window.location.href="/sociedadbancaria/bancos";
+            </script>';
+            
+        }else{ 
+            $respuesta = $banco->setBancos($datos);
+            echo'<script>alert("Banco cargado exitosamente.")
+            window.location.href="/sociedadbancaria/bancos";
+            </script>';
         }
     }
 
@@ -56,8 +62,9 @@ class bancosController extends BaseController
         $banco = new bancosModel();
 
         $respuesta = $banco->updateBancos($datos, $nombre, $sucursal);
- 
-        return redirect()->to(base_url('bancos'));
+        echo'<script>alert("Modificación exitosa."); 
+            window.location.href="/sociedadbancaria/bancos";
+            </script>';
     }
 
     public function obtenerBanco($nombre, $sucursal) {

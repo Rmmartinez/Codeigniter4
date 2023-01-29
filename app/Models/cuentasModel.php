@@ -47,36 +47,26 @@ class cuentasModel extends Model
     }
 
     public function obtenerCuentas($data) {
-        /*$cuenta =  $this->db->table('cuentas');
-        $cuenta->where('dni_titular',$data);
-        return $cuenta->get()getResultArray();*/
-        
         $cuentas = $this->db->query("SELECT * FROM cuentas WHERE dni_titular = '$data'");
         return $cuentas->getResult();
-
-        //$cuentas = $this->db->table('cuentas');
-        //$cuentas->where($data);
-        //return $cuentas->get()->getResultArray();
     }
 
     public function obtenerCuentasAdmin($data) {
-        /*$cuenta =  $this->db->table('cuentas');
-        $cuenta->where('dni_titular',$data);
-        return $cuenta->get()getResultArray();*/
-        
-        //$cuentas = $this->db->query("SELECT * FROM cuentas WHERE dni_titular = '$data'");
-        //return $cuentas->getResult();
-
         $cuentas = $this->db->table('cuentas');
         $cuentas->where($data);
         return $cuentas->get()->getResultArray();
     }
 
     public function obtenerCuentasBanco($data) {
-        /*$cuenta =  $this->db->table('cuentas');
-        $cuenta->where('dni_titular',$data);
-        return $cuenta->get()getResultArray();*/
+
         $cuentas = $this->db->query("SELECT * FROM cuentas WHERE banco = '$data'");
         return $cuentas->getResult();
     }
+
+    public function getCuentaNum($data){
+        $buscoCuenta = $this->db->table('cuentas');
+		$buscoCuenta->where($data);
+		return $buscoCuenta->get()->getResultArray();
+    }
+
 }

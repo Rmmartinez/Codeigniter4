@@ -18,6 +18,12 @@ class clientesModel extends Model
         return 1;
     }
 
+    public function setUser($datos){
+        $clientes = $this->db->table('usuarios');
+        $clientes->insert($datos);
+        return 1;
+    }
+
     public function deleteClientes($data) {
         $clientes = $this->db->table('clientes');
         $clientes->where($data);
@@ -35,5 +41,11 @@ class clientesModel extends Model
         $clientes = $this->db->table('clientes');
         $clientes->where($data);
         return $clientes->get()->getResultArray();
+    }
+
+    public function getClienteDNI($data){
+        $buscoCliente = $this->db->table('clientes');
+		$buscoCliente->where($data);
+		return $buscoCliente->get()->getResultArray();
     }
 }

@@ -31,7 +31,7 @@ class Cuentas extends Migration
             ],
             'dni_titular' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => '11',
             ],
             'banco' => [
                 'type'       => 'VARCHAR',
